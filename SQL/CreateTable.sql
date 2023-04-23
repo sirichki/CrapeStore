@@ -1,0 +1,160 @@
+CREATE DATABASE [MyCrape]
+
+USE [MyCrape]
+GO
+
+/****** Object:  Table [dbo].[CATEGORY]    Script Date: 19/2/2566 2:09:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE TABLE [dbo].[PRODUCT](
+	[ID] [smallint] NOT NULL,
+	[PROD_NAME] [nvarchar](155) NULL,
+	[CATEGORY] [tinyint] NULL,
+	[PRICE] [decimal](13, 2) NULL,
+	[IS_ACTIVE] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[CATEGORY](
+	[ID] [tinyint] NOT NULL,
+	[CAT_NAME] [nvarchar](155) NULL,
+	[IS_ACTIVE] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[SALE](
+	[SALE_ID] [int] NOT NULL,
+	[SHIFT_ID] [tinyint] NULL,
+	[DAY_ID] [smallint] NULL,
+	[QUEUEID] [int] NULL,
+	[GRANDTOTAL] [decimal](13, 2) NULL,
+	[REMARK] [nvarchar](255) NULL,
+	[CREATEDATE] [datetime] NULL,
+	[MODDATE] [datetime] NULL,
+	[IS_ACTIVE] [bit] NULL,
+	[MODBY] [nvarchar](35) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[SALE_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[SALE_DETAIL](
+	[SALE_ID] [int] NOT NULL,
+	[ITEM_NO] [smallint] NOT NULL,
+	[QTY] [smallint] NULL,
+	[PRICE] [decimal](13, 2) NULL,
+	[TOTAL] [decimal](13, 2) NULL,
+	[VATABLE] [decimal](13, 2) NULL,
+	[VAT] [decimal](13, 2) NULL,
+	[NETBFVAT] [decimal](13, 2) NULL,
+	[NETTOTAL] [decimal](13, 2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[SALE_ID] ASC,
+	[ITEM_NO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[SALE_DETAIL_ITEM](
+	[SALE_ID] [int] NOT NULL,
+	[ITEM_NO] [smallint] NOT NULL,
+	[PROD_ID] [smallint] NULL,
+	[CAT_ID] [tinyint] NULL,
+	[PRICE] [decimal](13, 2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[SALE_ID] ASC,
+	[ITEM_NO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TB_PERIODS](
+	[PERIOD_ID] [int] NOT NULL,
+	[DAY_ID] [int] NULL,
+	[SHIFT_ID] [tinyint] NULL,
+	[BUS_DATE] [date] NULL,
+	[PERIODTYPE] [bit] NULL,
+	[PERIODSTATUS] [bit] NULL,
+	[OPENTIME] [datetime] NULL,
+	[CLOSETIME] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PERIOD_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE VIEW [dbo].[V_PRODUCT] 
+AS
+SELECT ROW_NUMBER() OVER( ORDER BY ID) AS VID
+		,*
+FROM PRODUCT
+GO
+
+INSERT INTO [dbo].[CATEGORY] VALUES
+(0,'แป้ง',1)
+,(1,'ไส้คาว',1)
+,(2,'ไส้หวาน',1)
+,(3,'ซอสฟรี',1)
+,(4,'ซอสพิเศษ',1)
+
+
+INSERT INTO PRODUCT VALUES
+(1,'วานิลลา',0,20.00,1)
+,(1001,'ไส้กรอกไก่',1,10.00,1)
+,(1002,'ไข่ไก่',1,10.00,1)
+,(1003,'ทูน่า',1,10.00,1)
+,(1004,'ปูอัด',1,10.00,1)
+,(1005,'หมูหยอง',1,10.00,1)
+,(1006,'เบคอน',1,10.00,1)
+,(1007,'แฮมหมู',1,10.00,1)
+,(1008,'น้ำหริกเผา',1,10.00,1)
+,(1009,'เชดด้าชีส',1,10.00,1)
+,(1010,'มอสซาเรลล่า',1,10.00,1)
+,(2001,'สตรอเบอรรี่',2,10.00,1)
+,(2002,'บลูเบอรรี่',2,10.00,1)
+,(2003,'แยมส้ม',2,10.00,1)
+,(2004,'ครีมวานิลลา',2,10.00,1)
+,(2005,'ช็อกโกแลต',2,10.00,1)
+,(2006,'มาล์ซเมลโล',2,10.00,1)
+,(2007,'เยลลี่',2,10.00,1)
+,(2008,'กล้วยหอม',2,10.00,1)
+,(2009,'คอร์นเฟล็ค',2,10.00,1)
+,(2010,'โกโก้ครั้นช์',2,10.00,1)
+,(2011,'ผงโอวัลติน',2,10.00,1)
+,(2012,'โอรีโอ้',2,10.00,1)
+,(2013,'เรนโบว์',2,10.00,1)
+,(2014,'อัลมอนด์',2,10.00,1)
+,(2015,'เม็ดมะม่วง',2,10.00,1)
+,(2016,'ฝอยทอง',2,10.00,1)
+,(2017,'นูเทลล่า',2,10.00,1)
+,(2018,'เนยถั่วสคิปปี้',2,10.00,1)
+,(3001,'แมกกี้',3,0.00,1)
+,(3002,'พริกไทย',3,0.00,1)
+,(3003,'มายองเนส',3,0.00,1)
+,(3004,'มะเขือเทศ',3,0.00,1)
+,(3005,'ซอสพริก',3,0.00,1)
+,(3006,'นมข้นหวาน',3,0.00,1)
+,(3007,'ช็อกโกแลต',3,0.00,1)
+,(4001,'ซอสพิซซ่า',4,5.00,1)
+,(4002,'ซอสชีส',4,5.00,1)
+,(4003,'สตรอเบอร์รี่',4,5.00,1)
+,(4004,'ซอสคาราเมล',4,5.00,1)
