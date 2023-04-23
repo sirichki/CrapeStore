@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1eadd;
+}
+
+h1 {
+  background-color: #503a2c;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(228, 215, 194, 0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
+
+.top {
+  height: 15%;
+  width: 100%;
+  font-size: 36;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mid {
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  background-color: #faf8f7;
+  height: 85%;
+  width: 100%;
+}
+
+.mid div {
+  display: grid;
+  grid-template-columns:  repeat(4,1fr);
+  align-self: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+}
+
+button {
+  align-items: center;
+  appearance: none;
+  background-color: #faf8f7;
+  border-radius: 2.5rem;
+  border-width: 0;
+  box-shadow: rgba(100, 61, 39, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#e7ddd6 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #5f3f31;
+  cursor: pointer;
+  display: inline-flex;
+  width: 70%;
+  height: 70%;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  justify-self: center;
+}
+
+button img {
+  width: 50%;
+}
+
+button:enabled:focus {
+  box-shadow: #e7dcd6 0 0 0 1.5px inset, rgba(66, 44, 35, 0.4) 0 2px 4px, rgba(66, 44, 35, 0.3) 0 7px 13px -3px, #e7ded6 0 -3px 0 inset;
+}
+
+button:enabled:hover {
+  box-shadow: rgba(66, 46, 35, 0.4) 0 4px 8px, rgba(66, 46, 35, 0.3) 0 7px 13px -3px, #e7dfd6 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+button:enabled:active {
+  box-shadow: #e7e0d6 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+button:disabled {
+  box-shadow: #e7e0d6  0 3px 7px inset;
+  filter: grayscale(95%);
+}

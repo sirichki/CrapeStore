@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>Search Bill</title>
+  <link rel="stylesheet" href="searchbill.css">
+</head>
+<body>
+    <section class="mid">
+        <div class="midleft">
+            <div id="billDisplay"></div>
+        </div>
+        <div class="midright">
+            <div class="searchtop">
+                <input type="number" id="billInputx" placeholder="ใส่เลขใบเสร็จ" onchange="checkDate()" onabort="checkDate()" onclick="checkDate()">
+                <button class="allbtn" id="searchBill" disabled onclick=getBillInfo()><img src="images/search.png"></button>
+            </div>
+            <div><p></p></div>
+            <div class="btdel">
+                <button class="allbtn" id="delButton" disabled onclick=delBill()><img src="images/bin.png"></button>
+                <button class="allbtn" disabled><p>recovery</p></button>
+            </div>
+            <div><p></p></div>
+            <div>
+                <button class="bkbtn" id="homeButton"><img src="images/backward.png"></button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<script type="text/javascript">
+    const baseURL = 'http://localhost:3000/';
+    var arr = [];
+    var textDynamicTable = ''
+    var billNo = 0
+    function checkDate() {
+        if(document.getElementById('billInputx').value) {
+             document.getElementById('searchBill').disabled = false;
+        }
+         else {
+            document.getElementById('searchBill').disabled = true;
+         }
+    }
+    async function getBillInfo() {
+        document.getElementById("billDisplay").innerHTML = ''
+        textDynamicTable = ''
+        billNo = 0
+        //console.log(document.getElementById('billInputx').value);
+        const params = document.getElementById('billInputx').value
+        const res = await fetch(baseURL + 'searchBill/'+params, { 
+            method: 'GET'
+        });
+        console.log(res);
+        const data = await res.json();
+        billNo = data.recordset[0].SALE_ID;
+        textDynamicTable =      "<p>เลขที่ใบเสร็จ : " + data.recordset[0].SALE_ID + '' + ""
+                            +   "&emsp; วันที่ขาย : " + data.recordset[0].BUS_DATE + '' + "</p>"
+                            +   "<p> เวลาขาย : " + data.recordset[0].CREATEDATE + '' + "</p>"
+                            +   "<p> กะที่ขาย : " + data.recordset[0].SHIFT_ID + '' + ""
+                            +   "&emsp; คิวที่ : " + data.recordset[0].QUEUEID + '' + "</p>"
+                            +   "<p>" + data.recordset[0].IS_ACTIVE + '' + "</p>"
+                            + "<p><table class='center'><tr><th>ลำดับ</th><th>สินค้า</th><th>ประเภท</th><th>ราคา</th></tr>";
+        //console.log(textDynamicTable);
+        for(var i=0; i<data.recordset.length ;i++){
+            textDynamicTable = textDynamicTable + "<tr><td>" + data.recordset[i].SUB_ITEM + '' + "</td>"
+                                                + "<td>" + data.recordset[i].PROD + '' + "</td>"
+                                                + "<td>" + data.recordset[i].CAT_NAME + '' + "</td>"
+                                                + "<td>" + data.recordset[i].SUB_PRICE + '' + "</td></tr>"
+          }
+        
+        textDynamicTable = textDynamicTable + "</table></p><br>"
+                                            + "<p>รวมราคาก่อน Vat : " + data.recordset[0].NETBFVAT + '' + "</p>"
+                                            + "<p>ราคา Vat : " + data.recordset[0].VAT + '' + "</p>"
+                                            + "<p>รวมราคาทั้งหมด : " + data.recordset[0].GRANDTOTAL + '' + "</p>";
+        //console.log(textDynamicTable);
+        //console.log(document.getElementById("tableBill"));
+        document.getElementById("billDisplay").innerHTML = textDynamicTable
+        if((textDynamicTable == '') || (data.recordset[0].IS_ACTIVE == 'สถานะ : ยกเลิกใบเสร็จ')) {
+            document.getElementById('delButton').disabled = true;
+        }
+        else document.getElementById('delButton').disabled = false;
+        //console.log(document.getElementById("tableBill"));
+    };
+
+    // document.getElementById("GetReport").onclick = function () {
+    //     moneyx = moneyx + 5;
+    //     document.getElementById('moneyx').value = moneyx;
+    // };
+    document.getElementById("homeButton").onclick = function () {
+        location.href = "sale.html";
+    };
+
+    async function delBill() {
+        const params = billNo
+        console.log('del');
+        if( confirm("ยืนยันการ ลบใบเสร็จหมายเลข" + billNo ) == true) {
+                const res = await fetch(baseURL + 'delbill/'+params, { 
+                method: 'GET'
+            });
+            const data = await res.json();
+            console.log(data);
+            document.getElementById("billDisplay").innerHTML = ''
+            textDynamicTable = ''
+            document.getElementById('searchBill').disabled = true;
+            document.getElementById('delButton').disabled = true;
+        }
+    };
+</script>

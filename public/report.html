@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Report</title>
+  <link rel="stylesheet" href="report.css">
+</head>
+<body>
+<section class="top">
+    <h1>รายงานต่างๆ</h1>
+</section>
+<section class="mid">
+    <div>
+        <button id="r1Button"><p>การเงินรายวัน</p></button>
+        <button disabled><p>รายงาน2</p></button>
+        <p></p>
+        <p></p>
+    </div>
+    <div>
+        <button disabled><p>รายงาน3</p></button>
+        <button disabled><p>รายงาน4</p></button>
+        <p></p>
+        <button id="homeButton"><img src="images/home.png"></button>
+    </div>
+</section>
+</body>
+</html>
+
+<script type="text/javascript">
+    document.getElementById("homeButton").onclick = function () {
+        location.href = "home.html";
+    };
+
+    document.getElementById("r1Button").onclick = function () {
+        location.href = "report_1.html";
+    };
+</script>

@@ -1,0 +1,309 @@
+<html>
+<head>
+    <title>Sale & Bill Management</title>
+  <link rel="stylesheet" href="posale.css">
+</head>
+<body>
+<section class="top">
+    <div class="topin1">
+        <input type =text disabled id="BillID" value="ใบเสร็จที่ : 1">
+        <input type =text disabled id="QueueID" value="คิวที่ : 1">
+    </div>
+    <div class="topin2">
+        <input type =text disabled id="BusDate" value="วันทำการ : 4/3/2023">
+        <input type =text disabled id="DayID" value="เลขวัน : 1">
+        <input type =text disabled id="ShiftID" value="กะที่ : 1">
+    </div>
+</section>
+<section class="mid">
+    <div class="midmenu1">
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat1_1" value="1," onchange=crapeListString()>
+            <label for="cat1_1">วานิลลา</label>
+        </div>
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+        <div><p></p></div>
+        <div><p></p></div>
+        <div><p></p></div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_1" value="1001," onchange=crapeListString()>
+            <label for="cat2_1">ไส้กรอกไก่</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_2" value="1002," onchange=crapeListString()>
+            <label for="cat2_2">ไข่ไก่</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_3" value="1003," onchange=crapeListString()>
+            <label for="cat2_3">ทูน่า</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_4" value="1004," onchange=crapeListString()>
+            <label for="cat2_4">ปูอัด</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_5" value="1005," onchange=crapeListString()>
+            <label for="cat2_5">หมูหยอง</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_6" value="1006," onchange=crapeListString()>
+            <label for="cat2_6">เบคอน</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_7" value="1007," onchange=crapeListString()>
+            <label for="cat2_7">แฮมหมู</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_8" value="1008," onchange=crapeListString()>
+            <label for="cat2_8">น้ำพริกเผา</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_9" value="1009," onchange=crapeListString()>
+            <label for="cat2_9">เชดด้าชีส</label>
+        </div>
+        <div>
+            
+        </div>
+        <div>
+            
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat2_10" value="1010," onchange=crapeListString()>
+            <label for="cat2_10">มอสซาเรลล่า</label>
+        </div>
+        <div><p></p></div>
+        <div><p></p></div>
+        <div><p></p></div>
+    </div>
+    <div class="midmenu1">
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat4_1" value="3001," onchange=crapeListString()>
+            <label for="cat4_1">แมกกี้</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat4_5" value="3005," onchange=crapeListString()>
+            <label for="cat4_5">ซอสพริก</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat5_1" value="4001," onchange=crapeListString()>
+            <label for="cat5_1">ซอสพิซซ่า</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat4_2" value="3002," onchange=crapeListString()>
+            <label for="cat4_2">พริกไทย</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat4_6" value="3006," onchange=crapeListString()>
+            <label for="cat4_6">นมข้นหวาน</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat5_2" value="4002," onchange=crapeListString()>
+            <label for="cat5_2">ซอสชีส</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat4_3" value="3003," onchange=crapeListString()>
+            <label for="cat4_3">มายองเนส</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat4_7" value="3007," onchange=crapeListString()>
+            <label for="cat4_7">ช็อกโกแลต</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat5_3" value="4003," onchange=crapeListString()>
+            <label for="cat5_3">สตรอเบอร์รี่</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat4_4" value="3004," onchange=crapeListString()>
+            <label for="cat4_4">มะเขือเทศ</label>
+        </div>
+        <div>
+            
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat5_4" value="4004," onchange=crapeListString()>
+            <label for="cat5_4">ซอสคาราเมล</label>
+        </div>
+    </div>
+    <div class="midmenu1">
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_1" value="2001," onchange=crapeListString()>
+            <label for="cat3_1">สตรอเบอร์รี่</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_8" value="2008," onchange=crapeListString()>
+            <label for="cat3_8">กล้วยหอม</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_15" value="2015," onchange=crapeListString()>
+            <label for="cat3_15">เม็ดมะม่วง</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_2" value="2002," onchange=crapeListString()>
+            <label for="cat3_2">บลูเบอร์รี่</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_9" value="2009," onchange=crapeListString()>
+            <label for="cat3_9">คอร์นเฟล็ค</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_16" value="2016," onchange=crapeListString()>
+            <label for="cat3_16">ฝอยทอง</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_3" value="2003," onchange=crapeListString()>
+            <label for="cat3_3">แยมส้ม</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_10" value="2010," onchange=crapeListString()>
+            <label for="cat3_10">โกโก้ครั้นช์</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_17" value="2017," onchange=crapeListString()>
+            <label for="cat3_17">นูเทลล่า</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_4" value="2004," onchange=crapeListString()>
+            <label for="cat3_4">ครีมวานิลลา</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_11" value="2011," onchange=crapeListString()>
+            <label for="cat3_11">ผงโอวัลติน</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_18" value="2018," onchange=crapeListString()>
+            <label for="cat3_18">เนยถั่วสคิปปี้</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_5" value="2005," onchange=crapeListString()>
+            <label for="cat3_5">ช็อกโกแลต</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_12" value="2012," onchange=crapeListString()>
+            <label for="cat3_12">โอรีโอ้</label>
+        </div>
+        <div>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_6" value="2006," onchange=crapeListString()>
+            <label for="cat3_6">มาร์ชเมลโล</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_13" value="2013," onchange=crapeListString()>
+            <label for="cat3_13">เรนโบว์</label>
+        </div>
+        <div>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_7" value="2007," onchange=crapeListString()>
+            <label for="cat3_7">เยลลี่</label>
+        </div>
+        <div>
+            <input type="checkbox" class="checkBoxClass" id="cat3_14" value="2014," onchange=crapeListString()>
+            <label for="cat3_14">อัลมอนด์</label>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+    <div class="midmenu2">
+        <div class="x1">
+            <button class="x1bt" id="addButton" onclick=addSaleList() disabled><img src="images/plus.png"></button>
+        </div>
+        <div class="x2">
+            <button class="x2bt" id="delButton" onclick=goDelete()><img src="images/search.png"></button>
+            <p>&nbsp;</p>
+            <button class="x2bt" id="homeButton" onclick=goHome()><img src="images/home.png"></button>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+<script type="text/javascript">
+    //checkAddButton();
+    const baseURL = 'http://localhost:3000/';
+    var crapeList =  ''
+    var inputElements = document.getElementsByClassName('checkBoxClass');
+    window.onload = getPeriods   
+
+    async function getPeriods() {
+        const res = await fetch(baseURL + 'period', { 
+            method: 'GET'
+        });
+        const data = await res.json();
+        if(data.recordset[0].STATE == 3) {
+            for(var i=0; i<40 ;i++){
+              inputElements[i].disabled = false
+          }
+          getPad();
+        }
+        else {
+            for(var i=0; i<40 ;i++){
+              inputElements[i].disabled = true
+          }
+          document.getElementById("BusDate").value = "วันทำการ : 0"
+          document.getElementById("DayID").value = "เลขวัน : 0"
+          document.getElementById("ShiftID").value = "กะที่ : 0"
+          document.getElementById("BillID").value = "เลขใบเสร็จ : 0"
+          document.getElementById("QueueID").value = "คิวที่ : 0"
+        }
+        //console.log(data.recordset[0].STATE)
+    };
+
+    async function addSaleList() {
+        const params = crapeList
+        const res = await fetch(baseURL + 'addsale/'+params, { 
+            method: 'GET'
+        });
+        const data = await res.json();
+        //input1.value = data.info;
+        console.log(data);
+        for(var i=0; i<40 ;i++){
+              inputElements[i].checked = false
+          }
+          crapeList = ''
+          document.getElementById("addButton").disabled = true
+          getPad();
+    };
+    async function getPad() {
+        const res = await fetch(baseURL + 'period3', { 
+            method: 'GET'
+        });
+        const data = await res.json();
+        //input1.value = data.info;
+        document.getElementById("BusDate").value = "วันทำการ : " + data.recordset[0].BUSDATE
+        document.getElementById("DayID").value = "เลขวัน : " + data.recordset[0].DAY_ID
+        document.getElementById("ShiftID").value = "กะที่ : " + data.recordset[0].SHIFT_ID
+        document.getElementById("BillID").value = "เลขใบเสร็จ : " + data.recordset[0].BILL_ID
+        document.getElementById("QueueID").value = "คิวที่ : " + data.recordset[0].QUEUE_ID
+        //console.log(xStatus);
+    };
+
+    function crapeListString() {
+        crapeList = ''
+        for(var i=0; i<40 ;i++){
+              if(inputElements[i].checked){
+                 crapeList = crapeList + inputElements[i].value;
+             }
+          }
+        if(crapeList !== '')
+            document.getElementById("addButton").disabled = false
+        else
+            document.getElementById("addButton").disabled = true
+        //console.log(crapeList);
+    };
+
+    function goDelete() {
+        location.href = "searchbill.html";
+    };
+    
+    function goHome() {
+        location.href = "home.html";
+    };
+
+</script>

@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Report Money</title>
+  <link rel="stylesheet" href="report_1.css">
+</head>
+<body>
+<section class="top">
+    <h1>รายงานการเงินรายวัน</h1>
+</section>
+<section class="mid">
+    <div class="midleft">
+        <input type =text disabled value="0" id="moneyx">
+    </div>
+    <div class="midright">
+        <div>
+            <input type =date id="datex" onchange="checkDate()">
+        </div>
+        <div><p></p></div>
+        <div class="btsearch">
+            <button id="GetReport" disabled onclick=getCashReport()><img src="images/search.png"></button>
+        </div>
+        <div><p></p></div>
+        <div>
+            <button id="homeButton"><img src="images/backward.png"></button>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+<script type="text/javascript">
+    const baseURL = 'http://localhost:3000/';
+    var moneyx = 0
+    function checkDate() {
+        if(document.getElementById('datex').value)
+             document.getElementById('GetReport').disabled = false;
+         else
+            document.getElementById('GetReport').disabled = true;
+    }
+    async function getCashReport() {
+        const params = document.getElementById('datex').value
+        const res = await fetch(baseURL + 'cashday/'+params, { 
+            method: 'GET'
+        });
+        const data = await res.json();
+        //input1.value = data.info;
+        moneyx = data.recordset[0].CASHDAY
+        console.log(moneyx);
+        document.getElementById('moneyx').value = moneyx;
+    };
+
+    // document.getElementById("GetReport").onclick = function () {
+    //     moneyx = moneyx + 5;
+    //     document.getElementById('moneyx').value = moneyx;
+    // };
+    document.getElementById("homeButton").onclick = function () {
+        location.href = "report.html";
+    };
+</script>

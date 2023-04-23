@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>My Crape v1</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+<section class="top">
+    <img src="images/food2.png">
+    <h1>&nbsp;&nbsp;My Crape</h1>
+</section>
+<section class="mid">
+    <div>
+        <button id="periodsButton"><img src="images/cln.png"></button>
+        <button id="saleButton"><img src="images/food2.png"></button>
+        <p></p>
+        <button id="reportButton"><img src="images/chart.png"></button>
+    </div>
+    <div>
+        <button disabled><img src="images/stock2.png"></button>
+        <p></p>
+        <p></p>
+        <button disabled><img src="images/gear.png"></button>
+    </div>
+</section>
+</body>
+</html>
+
+<script type="text/javascript">
+    var periodStatus = 1
+    const baseURL = 'http://localhost:3000/';
+    // window.onload = getPeriods   
+    // async function getPeriods(e) {
+    //     e.preventDefault()
+    //     const res = await fetch(baseURL + 'period', { 
+    //         method: 'GET'
+    //     });
+    //     const data = await res.json();
+    //     //input1.value = data.info;
+    //     periodStatus = data.recordset[0].STATE
+    //     console.log(periodStatus);
+    //     if(periodStatus==3) {
+    //         document.getElementById('saleButton').disabled = false;
+    //         //console.log('true')
+    //     }  
+    //     else {
+    //         //console.log('false')
+    //         document.getElementById('saleButton').disabled = true;
+    //     }
+    // };
+    document.getElementById("periodsButton").onclick = function () {
+        location.href = "periods.html";
+    };
+    document.getElementById("saleButton").onclick = function () {
+        location.href = "sale.html";
+    };
+    document.getElementById("reportButton").onclick = function () {
+        location.href = "report.html";
+    };
+</script>

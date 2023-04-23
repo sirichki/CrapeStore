@@ -1,0 +1,233 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e7dcca;
+}
+
+.top {
+    /* background-color: #dbb577; */
+    height: 15%;
+    width: 100%;
+    font-size: 36;
+    display: flex;
+    grid-template-columns:  repeat(4,1fr);
+    box-sizing: border-box;
+}
+
+.topin1 {
+  display: block;
+  align-self: center;
+  align-items: center;
+  justify-items: center;
+  text-justify: center;
+  height: 100%;
+  width: 35%;
+  margin-top: 2%;
+  box-sizing: border-box;
+}
+
+.topin2 {
+  display: grid;
+  grid-template-columns:  repeat(3,1fr);
+  align-self: center;
+  align-items: center;
+  justify-items: center;
+  text-justify: center;
+  height: 100%;
+  width: 65%;
+  box-sizing: border-box;
+}
+
+.topin1 input {
+  margin-top: 3%;
+  margin-left: 15%;
+  height: 25%;
+}
+
+.topin2 input {
+  height: 25%;
+  width: 90%;
+}
+
+
+.mid {
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  background-color: #faf8f7;
+  height: 85%;
+  width: 100%;
+  display: grid;
+  grid-template-columns:  repeat(2,1fr);
+  padding-left: 1.5%;
+  box-sizing: border-box;
+}
+
+.midmenu1 {
+  display: grid;
+  grid-template-columns:  repeat(3,1fr);
+  align-items: center;
+  height: 50%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.midmenu1 div {
+  align-self: center;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+}
+
+.midmenu2 {
+  padding-top: 5%;
+  display: flex;
+  height: 60%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.x1 {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  align-items: center;
+}
+.x2 {
+  display: block;
+  height: 40%;
+  width: 50%;
+}
+
+button {
+  align-items: center;
+  appearance: none;
+  background-color: #faf8f7;
+  border-radius: 2.5rem;
+  border-width: 0;
+  box-shadow: rgba(100, 61, 39, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#e7ddd6 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #5f3f31;
+  cursor: pointer;
+  display: inline-flex;
+  width: 90%;
+  height: 90%;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  justify-self: center;
+}
+
+.x2bt img {
+  height: 50%;
+}
+
+.x1bt img {
+  width: 30%;
+}
+
+button:enabled:focus {
+  box-shadow: #e7dcd6 0 0 0 1.5px inset, rgba(66, 44, 35, 0.4) 0 2px 4px, rgba(66, 44, 35, 0.3) 0 7px 13px -3px, #e7ded6 0 -3px 0 inset;
+}
+
+button:enabled:hover {
+  box-shadow: rgba(66, 46, 35, 0.4) 0 4px 8px, rgba(66, 46, 35, 0.3) 0 7px 13px -3px, #e7dfd6 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+button:enabled:active {
+  box-shadow: #e7e0d6 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+button:disabled {
+  box-shadow: #e7e0d6  0 3px 7px inset;
+  background-color: #fefbfa;
+  filter: grayscale(95%);
+  /* filter: blur(1px); */
+}
+
+
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]+label {
+text-align: center;
+background-color: #faf8f7;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 90%;
+min-height: 2.5rem;
+border-radius: 0.3rem;
+cursor: pointer;
+position: relative;
+color: #947968;
+font-weight: bold;
+margin-top: 5px;
+font-size: 0.9rem;
+/* text-indent:1em; */
+border: 1px solid  #e9e6e3;
+}
+
+
+
+input[type=checkbox]:enabled+label:hover {
+  background-color: #e7dcca;
+  color: #4d3723;
+  transform: translateY(2px);
+  box-shadow: inset 0 2px #afafaf;
+  transition: all .2s ease-out;
+  border: 1px solid  #9c7e5c;
+}
+input[type=checkbox]:enabled:checked+label {
+  background-color: #e7dcca;
+  transform: translateY(2px);
+  box-shadow: inset 0 2px #afafaf;
+  transition: all .2s ease-in;
+  /* transition-delay: .8s; */
+  border: 1px solid  #9c8862;
+}
+
+input[type=checkbox]:enabled:checked+label::after {
+  background-image: url(images/check2.png);
+  background-position: center;
+  background-repeat:no-repeat;
+  background-size: 10px 10px;
+  justify-items: center;
+  align-items: center;
+  border-image-width: 100%;
+  content: "";
+  width:23px;
+  height:2.55rem;
+  position:absolute;
+  left:0px;
+  top: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  opacity: 1;
+  background-color:#bea98b;
+  box-shadow: inset 0 2px rgb(129, 101, 79);
+}
+
+input[type=checkbox]:disabled+label {
+  background-color: #fefbfa;
+  border: 1px solid  #f0eeed;
+  color: #ddd9d6;
+}
+

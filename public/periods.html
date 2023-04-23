@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>Period Management</title>
+  <link rel="stylesheet" href="periods.css">
+</head>
+<body>
+<section class="top">
+    <div><input type=text disabled id="BusDate" disabled></div>
+    <div><input type=text disabled id="DayID" disabled></div>
+    <div><input type=text disabled id="ShiftID" disabled></div>
+    <div><input type=text disabled id="ShiftStatus" disabled></div>
+</section>
+<section class="mid">
+    <div>
+        <button id="openday" disabled onclick=clickButtonPeriod(id)><p>เปิดวัน</p></button>
+        <button id="openshift" disabled onclick=clickButtonPeriod(id)><p>เปิดกะ</p></button>
+        <button id="shiftday" disabled onclick=clickButtonPeriod(id)><p>ข้ามวัน</p></button>
+        <p></p>
+    </div>
+    <div>
+        <button id="closeday" disabled onclick=clickButtonPeriod(id)><p>ปิดวัน</p></button>
+        <button id="closeshift" disabled onclick=clickButtonPeriod(id)><p>ปิดกะ</p></button>
+        <p></p>
+        <button id="homeButton"><img src="images/home.png"></button>
+    </div>
+</section>
+</body>
+</html>
+
+<script type="text/javascript">
+    //onclick=periodManagement(id)
+    var xStatus = 1;
+    const baseURL = 'http://localhost:3000/';
+    window.onload = getPeriods   
+    async function getPeriods() {
+        const res = await fetch(baseURL + 'period', { 
+            method: 'GET'
+        });
+        const data = await res.json();
+        //input1.value = data.info;
+        xStatus = data.recordset[0].STATE
+        //console.log(xStatus);
+        checkButton();
+        getPeriods2();
+    };
+
+    async function getPeriods2() {
+        const res = await fetch(baseURL + 'period2', { 
+            method: 'GET'
+        });
+        const data = await res.json();
+        //input1.value = data.info;
+        //console.log(data.recordset[0]);
+        document.getElementById('BusDate').value = "วันทำการ : " + data.recordset[0].BUSDATE;
+        document.getElementById('DayID').value = "เลขวัน :" + data.recordset[0].DAY_ID;
+        document.getElementById('ShiftID').value = "กะที่ :" + data.recordset[0].SHIFT_ID;
+        document.getElementById('ShiftStatus').value = "สถานะ :" + data.recordset[0].PERIODSTATUS;
+    }
+
+    document.getElementById("homeButton").onclick = function () {
+        location.href = "home.html";
+    };
+    function clickButtonPeriod(params) {
+        switch(params) {
+            case 'openday': 
+                if( confirm("ยืนยันการ เปิดวัน! สำหรับธุรกิจ") == true) {
+                    periodManage(params);
+                }
+            break;
+            case 'closeday': 
+                if( confirm("ยืนยันการ ปิดวัน! หยุดขายสำหรับวันนี้") == true) {
+                    periodManage(params);
+                }
+            break;
+            case 'openshift': 
+                if( confirm("ยืนยันการ เปิดกะใหม่ เพื่อขาย!") == true) {
+                    periodManage(params);
+                }
+            break;
+            case 'closeshift': 
+                if( confirm("ยืนยันการ ปิดกะ พักการขาย!") == true) {
+                    periodManage(params);
+                }
+            break;
+            case 'shiftday': 
+                if( confirm("ต้องการข้ามวันธุรกิจไปวันถัดไป !?") == true) {
+                    periodManage(params);
+                }
+            break;
+            default: alert('default');
+        }
+    };
+    async function periodManage(params) {
+        console.log('click : '+params)
+        const res = await fetch(baseURL + 'periodManage/'+params, { 
+            method: 'GET'
+        });
+        const data = await res.json();
+        //input1.value = data.info;
+        console.log(data);
+        getPeriods();
+        getPeriods2();
+    };
+
+    function checkButton() {
+        if(xStatus == 1) {
+             document.getElementById('openday').disabled = false;
+             document.getElementById('closeday').disabled = true;
+             document.getElementById('openshift').disabled = true;
+             document.getElementById('closeshift').disabled = true;
+             document.getElementById('shiftday').disabled = false;
+    }
+    if(xStatus == 2) {
+            document.getElementById('openday').disabled = true;
+             document.getElementById('closeday').disabled = false;
+             document.getElementById('openshift').disabled = false;
+             document.getElementById('closeshift').disabled = true;
+             document.getElementById('shiftday').disabled = true;
+    }
+    if(xStatus == 3) {
+            document.getElementById('openday').disabled = true;
+             document.getElementById('closeday').disabled = true;
+             document.getElementById('openshift').disabled = true;
+             document.getElementById('closeshift').disabled = false;
+             document.getElementById('shiftday').disabled = true;
+    }
+    }
+</script>
